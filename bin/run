@@ -10,7 +10,7 @@ podman run -d \
   --restart=always \
   --network host \
   -e CLOUDFLARE_TOKEN=$CLOUDFLARE_TOKEN \
-  -v ~/caddy-data/Caddyfile:/etc/caddy/Caddyfile:ro \
+  -v ~/dohm/Caddyfile:/etc/caddy/Caddyfile:ro \
   -v ~/caddy-data/site:/srv/site:ro \
   -v ~/caddy-data/data:/data \
   -v ~/caddy-data/config:/config \
