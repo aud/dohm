@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "Running dohm..."
+
+set -x
+podman run -d \
+  --name caddy \
+  --restart=always \
+  --network host \
+  -e CLOUDFLARE_TOKEN=$CLOUDFLARE_TOKEN \
+  -v ~/caddy-data/Caddyfile:/etc/caddy/Caddyfile:ro \
+  -v ~/caddy-data/site:/srv/site:ro \
+  -v ~/caddy-data/data:/data \
+  -v ~/caddy-data/config:/config \
+  dohm:latest
+
+set +x
+
+echo "Done!"

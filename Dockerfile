@@ -12,6 +12,3 @@ RUN apk add --no-cache curl
 WORKDIR /dohm
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
-COPY Caddyfile /dohm/Caddyfile
-
-CMD ["caddy", "run", "--config", "/dohm/Caddyfile"]
