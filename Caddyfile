@@ -1,0 +1,14 @@
+{
+  admin off
+  email elliotdohm@gmail.com
+  acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+dohm.dev {
+  tls {
+    dns cloudflare {env.CLOUDFLARE_TOKEN}
+  }
+
+  root * /dohm/test
+  file_server
+}
