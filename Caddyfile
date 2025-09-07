@@ -37,6 +37,6 @@ dohm.dev {
   # }
 
   # Static site
-  root * /srv/site
+  root * /srv/static
   file_server
 }

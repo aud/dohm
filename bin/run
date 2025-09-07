@@ -14,7 +14,7 @@ podman run -d \
   -p 443:443 \
   -e CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
   -v /home/elliot/dohm/Caddyfile:/etc/caddy/Caddyfile:ro \
-  -v /home/elliot/caddy-data/site:/srv/site:ro \
+  -v /home/elliot/dohm/static:/srv/static:ro \
   -v /home/elliot/caddy-data/data:/data \
   -v /home/elliot/caddy-data/config:/config \
   dohm:latest
