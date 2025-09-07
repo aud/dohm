@@ -1,6 +1,6 @@
 {
   admin off
-  email elliotdohm@gmail.com
+  email elliotdohm+dohmserver@gmail.com
   # Staging:
   # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
@@ -17,15 +17,26 @@ dohm.dev {
   }
 
   # Private services
-  # @private_services {
-  #   path /p/*
-  #   path /p
-  # }
+  @private_services {
+    path /p/*
+    path /p
+  }
 
-  handle /p/tv {
+  handle @private_services {
     basic_auth {
       elliot "$2a$12$zyZObIHOJF2XDGgLCDIXN.j14P/GYGiTjxuEXj.QD2WQT42AWWbr."
     }
-    reverse_proxy 100.92.233.41:8989
+    respond "Soon!" 200
   }
+
+  # handle /p/tv {
+  #  basic_auth {
+  #    elliot "$2a$12$zyZObIHOJF2XDGgLCDIXN.j14P/GYGiTjxuEXj.QD2WQT42AWWbr."
+  #  }
+  #  reverse_proxy 100.92.233.41:8989
+  # }
+
+  # Static site
+  root * /srv/site
+  file_server
 }
