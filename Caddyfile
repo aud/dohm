@@ -1,14 +1,31 @@
 {
   admin off
   email elliotdohm@gmail.com
-  acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+  # Staging:
+  # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
 
 dohm.dev {
+  # Letsencrypt challenge
   tls {
     dns cloudflare {env.CLOUDFLARE_TOKEN}
   }
 
-  root * /dohm/test
-  file_server
+  # Health check
+  handle /caddy-health {
+    respond "OK" 200
+  }
+
+  # Private services
+  # @private_services {
+  #   path /p/*
+  #   path /p
+  # }
+
+  handle /p/tv {
+    basic_auth {
+      elliot "$2a$12$zyZObIHOJF2XDGgLCDIXN.j14P/GYGiTjxuEXj.QD2WQT42AWWbr."
+    }
+    reverse_proxy 100.92.233.41:8989
+  }
 }

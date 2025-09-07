@@ -5,7 +5,7 @@ set -euo pipefail
 echo "Building dohm..."
 
 set -x
-podman build -f ../Dockerfile -t dohm:latest
+podman build -f Dockerfile -t dohm:latest
 set +x
 
 echo "Done!"
