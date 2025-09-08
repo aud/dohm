@@ -6,7 +6,7 @@ echo "Running dohm..."
 
 set -x
 
-podman run -d \
+podman run \
   --replace \
   --restart=always \
   --name caddy \
