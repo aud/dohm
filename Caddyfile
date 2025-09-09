@@ -40,3 +40,19 @@ dohm.dev {
   root * /srv/static
   file_server
 }
+
+dohm.ca {
+  tls {
+    dns cloudflare {env.CLOUDFLARE_TOKEN}
+  }
+
+  redir https://dohm.dev{uri} permanent
+}
+
+elliotdohm.com {
+  tls {
+    dns cloudflare {env.CLOUDFLARE_TOKEN}
+  }
+
+  redir https://dohm.dev{uri} permanent
+}
